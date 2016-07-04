@@ -39,7 +39,8 @@
   "title": "Carbon C Relay",
   "tags": [
     "graphite",
-    "monitoring"
+    "monitoring",
+    "relay"
   ],
   "style": "dark",
   "timezone": "browser",
@@ -75,6 +76,17 @@
           "id": 8,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "null",
           "nullText": null,
@@ -82,6 +94,13 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
             "fillColor": "rgba(64, 228, 20, 0.15)",
@@ -101,25 +120,7 @@
           "type": "singlestat",
           "valueFontSize": "70%",
           "valueMaps": [],
-          "valueName": "avg",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -144,6 +145,17 @@
           "id": 17,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "null",
           "nullText": null,
@@ -151,6 +163,13 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
             "fillColor": "rgba(59, 236, 24, 0.15)",
@@ -175,25 +194,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -218,6 +219,17 @@
           "id": 18,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "null",
           "nullText": null,
@@ -225,6 +237,13 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
             "fillColor": "rgba(97, 179, 57, 0.15)",
@@ -249,25 +268,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -281,7 +282,7 @@
           "datasource": "${DS_GRAPHITE}",
           "editable": true,
           "error": false,
-          "format": "µs",
+          "format": "Âµs",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -292,6 +293,17 @@
           "id": 19,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "null",
           "nullText": null,
@@ -299,6 +311,13 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "30%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
             "fillColor": "rgba(191, 182, 80, 0.15)",
@@ -333,25 +352,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -376,6 +377,17 @@
           "id": 20,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "null",
           "nullText": null,
@@ -383,11 +395,18 @@
           "postfixFontSize": "30%",
           "prefix": "",
           "prefixFontSize": "30%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
-            "fillColor": "rgba(191, 80, 80, 0.15)",
+            "fillColor": "rgba(191, 182, 80, 0.15)",
             "full": true,
-            "lineColor": "rgb(226, 47, 47)",
+            "lineColor": "rgb(205, 205, 20)",
             "show": true
           },
           "targets": [
@@ -402,25 +421,7 @@
           "type": "singlestat",
           "valueFontSize": "70%",
           "valueMaps": [],
-          "valueName": "avg",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -445,6 +446,17 @@
           "id": 23,
           "interval": null,
           "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
           "maxDataPoints": 100,
           "nullPointMode": "connected",
           "nullText": null,
@@ -452,6 +464,13 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "30%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
           "span": 2,
           "sparkline": {
             "fillColor": "rgba(15, 133, 232, 0.15)",
@@ -477,27 +496,10 @@
               "value": "null"
             }
           ],
-          "valueName": "total",
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1
+          "valueName": "total"
         }
       ],
+      "showTitle": true,
       "title": "Carbon C relay status (avg values)"
     },
     {
@@ -579,8 +581,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -668,8 +670,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -750,8 +752,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -840,8 +842,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -866,16 +868,19 @@
           ]
         },
         {
-          "aliasColors": {},
+          "aliasColors": {
+            "Busyness": "#EF843C"
+          },
           "bars": false,
           "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
           "editable": true,
           "error": false,
           "fill": 0,
           "grid": {
-            "threshold1": 300,
+            "threshold1": null,
             "threshold1Color": "rgb(216, 200, 27)",
-            "threshold2": 350,
+            "threshold2": null,
             "threshold2Color": "rgb(234, 112, 112)",
             "thresholdLine": true
           },
@@ -892,7 +897,7 @@
             "values": true
           },
           "lines": true,
-          "linewidth": 1,
+          "linewidth": 2,
           "links": [],
           "nullPointMode": "null",
           "percentage": false,
@@ -905,24 +910,33 @@
           "steppedLine": false,
           "targets": [
             {
-              "hide": false,
+              "hide": true,
               "refId": "A",
-              "target": "alias(carbon.relays.$relays.dispatch_busy, 'Busy')"
+              "target": "carbon.relays.$relays.dispatch_wallTime_us"
             },
             {
-              "hide": false,
+              "hide": true,
               "refId": "B",
-              "target": "alias(carbon.relays.$relays.dispatch_idle, 'Idle')"
+              "target": "carbon.relays.$relays.dispatch_sleepTime_us"
+            },
+            {
+              "hide": true,
+              "refId": "C",
+              "target": "sumSeries(#A, #B)"
+            },
+            {
+              "refId": "D",
+              "target": "alias(divideSeries(#A, #C), 'Busyness')"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Dispatchers state",
+          "title": "Dispatchers busyness",
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -930,7 +944,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "percentunit",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1002,8 +1016,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "individual",
-            "sort": 0
+            "sort": 0,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -1011,7 +1025,7 @@
           },
           "yaxes": [
             {
-              "format": "µs",
+              "format": "Âµs",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1084,8 +1098,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1157,8 +1171,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1230,8 +1244,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1239,7 +1253,7 @@
           },
           "yaxes": [
             {
-              "format": "µs",
+              "format": "Âµs",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1312,8 +1326,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1385,8 +1399,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1458,8 +1472,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1467,7 +1481,7 @@
           },
           "yaxes": [
             {
-              "format": "µs",
+              "format": "Âµs",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1551,8 +1565,8 @@
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "value_type": "cumulative",
-            "sort": 0
+            "sort": 0,
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -1676,7 +1690,7 @@
   },
   "refresh": "1m",
   "schemaVersion": 12,
-  "version": 0,
+  "version": 4,
   "links": [
     {
       "icon": "info",
