@@ -1,0 +1,1680 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_GRAPHITE",
+      "label": "graphite",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "graphite",
+      "pluginName": "Graphite"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "3.1.0"
+    },
+    {
+      "type": "datasource",
+      "id": "graphite",
+      "name": "Graphite",
+      "version": "1.0.0"
+    }
+  ],
+  "id": null,
+  "title": "Service - MySQL InnoDB Metrics",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {
+            "Max Checkpoint Age": "#E24D42",
+            "Uncheckpointed Bytes": "#EF843C"
+          },
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 8,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_checkpoint_age, 'Uncheckpointed Bytes')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_checkpoint_max_age, 'Max Checkpoint Age')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Checkpoint Age",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 0,
+          "editable": true,
+          "error": false,
+          "format": "bytes",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "130px",
+          "id": 2,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "target": "servers.$host.mysql-variables.gauge-innodb_buffer_pool_size"
+            }
+          ],
+          "thresholds": "90,95",
+          "title": "InnoDB Buffer Pool Size",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "128px",
+          "id": 3,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "hide": true,
+              "refId": "A",
+              "target": "servers.$host.mysql-variables.gauge-innodb_buffer_pool_size"
+            },
+            {
+              "hide": true,
+              "refId": "B",
+              "target": "sumSeries(servers.$host.memory.memory-{buffered,free,used,cached})",
+              "textEditor": false
+            },
+            {
+              "refId": "C",
+              "target": "divideSeries(#A, #B)"
+            }
+          ],
+          "thresholds": "40,80",
+          "title": "Buffer Pool Size of Total RAM",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "Threads connected": "#EAB839",
+            "Threads running": "#E24D42"
+          },
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "",
+          "id": 4,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Running",
+              "color": "#E24D42"
+            },
+            {
+              "alias": "Threads Connected",
+              "color": "#EAB839"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_max_trx_id), 'InnoDB Transactions')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_history_list_length, 'History Length')"
+            },
+            {
+              "refId": "C",
+              "target": "alias(servers.$host.mysql-variables.gauge-innodb_max_purge_lag, 'Max Purge Lag')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Transactions",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "255px",
+          "id": 5,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_rows_deleted), 'Rows deleted')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_rows_inserted), 'Rows inserted')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_rows_read), 'Rows  read')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "D",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_rows_updated), 'Rows updated')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Row Operations",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Total Size of InnoDB Log Files",
+              "bars": false,
+              "color": "#E24D42",
+              "fill": 0,
+              "lines": true
+            },
+            {
+              "alias": "Data Written",
+              "color": "#EF843C"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_os_log_written), 'Data Written')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "hide": true,
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "servers.$host.mysql-variables.gauge-innodb_log_files_in_group",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "hide": true,
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "servers.$host.mysql-variables.gauge-innodb_log_file_size",
+              "textEditor": false
+            },
+            {
+              "refId": "D",
+              "target": "alias(multiplySeries(#C, #B), 'Total Size of InnoDB Log Files')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Log File Usage Hourly",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "255px",
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_data_reads), 'Data Reads')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_data_writes), 'Data Writes')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_data_fsyncs), 'Data Fsyncs')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "D",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_log_writes), 'Log Writes')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB I/O",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Avg Row Lock Wait Time",
+              "yaxis": 2
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_row_lock_waits), 'Row Lock Waits')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_row_lock_time), 'Row Lock Wait Load')",
+              "textEditor": false
+            },
+            {
+              "hide": false,
+              "refId": "B",
+              "target": "alias(divideSeries(#B, #A), 'Avg Row Lock Wait Time')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Row Lock Time - #B je za preverit, če ok racuna",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "ms",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "title": "General"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 15,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_buffer_pool_bytes_data, 'Data Total')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_buffer_pool_bytes_dirty, 'Data Dirty')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Buffer Pool Content",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 21,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_buffer_pool_pages_data, 'Data')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_buffer_pool_pages_free, 'Free')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Innodb_buffer_pool_pages_dirty, 'Dirty')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Buffer Pool Pages",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 22,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_pages_created), 'Pages Created')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_pages_read), 'Pages Created')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_pages_written), 'Pages Written')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Buffer Pool I/O",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 23,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_buffer_pool_read_requests), 'Read Requests')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_buffer_pool_write_requests), 'Write Requests')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Buffer Pool Requests",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Buffer Pool"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 19,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "hide": true,
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "servers.$host.mysql-status.gauge-Innodb_ibuf_segment_size"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "hide": true,
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "servers.$host.mysql-status.gauge-Innodb_ibuf_free_list"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "hide": true,
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "servers.$host.mysql-status.gauge-Innodb_page_size"
+            },
+            {
+              "refId": "C",
+              "target": "alias(multiplySeries(#F, #B), 'Allocated')"
+            },
+            {
+              "hide": false,
+              "refId": "D",
+              "target": "alias(multiplySeries(#E, #B), 'Used')"
+            },
+            {
+              "hide": true,
+              "refId": "E",
+              "target": "diffSeries(#F, #A)"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Change Buffer",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 20,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_ibuf_merges), 'Merges')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_ibuf_merged_inserts), 'Merged Inserts')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_ibuf_merged_deletes), 'Merged Deletes')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Innodb_ibuf_merged_delete_marks), 'Merged Delete Marks')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "InnoDB Change Buffer Activity",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Change/Insert Buffer"
+    }
+  ],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": "${DS_GRAPHITE}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": "servers.sql*",
+        "refresh": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 12,
+  "version": 13,
+  "links": [],
+  "gnetId": null
+}

@@ -1,0 +1,2461 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_GRAPHITE",
+      "label": "graphite",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "graphite",
+      "pluginName": "Graphite"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "3.1.0"
+    },
+    {
+      "type": "datasource",
+      "id": "graphite",
+      "name": "Graphite",
+      "version": "1.0.0"
+    }
+  ],
+  "id": null,
+  "title": "Service - MySQL Overview",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 8,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Connections), 'Connections')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(perSecond(servers.$host.mysql-status.gauge-Max_used_connections), 'Max used connections')"
+            },
+            {
+              "refId": "C",
+              "target": "alias(perSecond(servers.$host.mysql-variables.gauge-max_connections), 'Max connections')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Connections",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 1,
+          "editable": true,
+          "error": false,
+          "format": "s",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "130px",
+          "id": 2,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "s",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "target": "servers.$host.mysql-status.gauge-Uptime"
+            }
+          ],
+          "thresholds": "300,3600",
+          "title": "MySQL Uptime",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 1,
+          "editable": true,
+          "error": false,
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "128px",
+          "id": 3,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "target": "perSecond(servers.$host.mysql-status.counter-Queries)"
+            }
+          ],
+          "thresholds": "35,75",
+          "title": "Current QPS",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "Threads connected": "#EAB839",
+            "Threads running": "#E24D42"
+          },
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 4,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Running",
+              "color": "#E24D42"
+            },
+            {
+              "alias": "Threads Connected",
+              "color": "#EAB839"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(servers.$host.mysql-status.gauge-Threads_connected, 'Threads connected')"
+            },
+            {
+              "refId": "B",
+              "target": "alias(servers.$host.mysql-status.gauge-Threads_running, 'Threads running')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Active Threads",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 5,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-variables.gauge-thread_cache_size, 'Thread Cache Size')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Threads_cached, 'Threads cached')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Threads_created), 'Threads created')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Thread Cache",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Table_locks_immediate), 'Table Locks Immediate')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Table_locks_waited), 'Table Locks Waited')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Table Locks",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Created_tmp_tables), 'Created Tmp Tables')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Created_tmp_disk_tables), 'Created Tmp Disk Tables')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Created_tmp_files), 'Created Tmp Files')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Temporary Objects",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Select_full_join), 'Select Full Join')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Select_full_range_join), 'Select Full Range Join')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Select_range), 'Select Range')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "D",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Select_range_check), 'Select Range Check')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "E",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Select_scan), 'Select Scan')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Select Types",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 9,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Sort_rows), 'Sort Rows')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Sort_range), 'Sort Range')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Sort_merge_passes), 'Sort Merge Passes')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "D",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Sort_scan), 'Sort Scan')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Sorts",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 10,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Bytes_received), 'Inbound')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Bytes_sent), 'Outbound')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Network Traffic",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 14,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Bytes_received), 'Inbound')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Bytes_sent), 'Outbound')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": "24h",
+          "timeShift": null,
+          "title": "MySQL Network Traffic",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 12,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Aborted_clients), 'Aborted Clients (timeout)')",
+              "textEditor": false
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Aborted_connects), 'Aborted Connects (attempts)')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Aborted Connections",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 13,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Slow_queries), 'Slow Queries')",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Slow Queries",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "title": "General Stats"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 15,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "aliasByNode(aliasSub(limit(sortByMaxima(perSecond(servers.$host.mysql-status.counter-Com_*)), 8), 'counter-(.*)', '\\1'), 3)",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Top Command Counters",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 16,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "aliasByNode(aliasSub(limit(sortByMaxima(perSecond(servers.$host.mysql-status.counter-Com_*)), 8), 'counter-(.*)', '\\1'), 3)",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": "24h",
+          "timeShift": null,
+          "title": "Top Command Counters Hourly",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 17,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "aliasByNode(aliasSub(limit(sortByMaxima(perSecond(servers.$host.mysql-status.counter-Handler_*)), 8), 'counter-(.*)', '\\1'), 3)",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Handlers",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 18,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Threads Created",
+              "fill": 0
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_variables_thread_cache_size{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Thread Cache Size",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22mysql_global_variables_thread_cache_size%7Balias%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243201s%22%2C%22end_input%22%3A%222015-8-27%208%3A18%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "aliasByNode(aliasSub(limit(sortByMaxima(perSecond(servers.$host.mysql-status.counter-Handler_*)), 8), 'counter-(.*)', '\\1'), 3)",
+              "textEditor": false
+            }
+          ],
+          "timeFrom": "24h",
+          "timeShift": null,
+          "title": "MySQL Handlers Hourly",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Command, Handlers, Processes"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 19,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Qcache_free_memory, 'Free Memory')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-variables.gauge-query_cache_size, 'Query Cache Size')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Query Cache Memory",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 20,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Qcache_hits), 'Hits')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Qcache_inserts), 'Inserts')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "B",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Qcache_not_cached), 'Not Cached')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "C",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Qcache_lowmem_prunes), 'Prunes')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "D",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Qcache_queries_in_cache), 'Queries in Cache')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Query Cache Activity",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Query Cache"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 21,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(perSecond(servers.$host.mysql-status.counter-Opened_files), 'Openings')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL File Openings",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 22,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "Open Files Limit",
+              "fill": 0
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Open_files, 'Open Files')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-variables.gauge-open_files_limit, 'Open Files Limit')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Open Files",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 23,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.counter-Opened_tables, 'Openings')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Table Openings",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_GRAPHITE}",
+          "decimals": 2,
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 24,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "F",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-status.gauge-Open_tables, 'Open Tables')"
+            },
+            {
+              "calculatedInterval": "2m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "mysql_global_status_qcache_free_memory{alias=\"$host\"}",
+              "interval": "$interval",
+              "intervalFactor": 1,
+              "legendFormat": "Free Memory",
+              "metric": "",
+              "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22rate(mysql_global_status_table_locks_waited%7Balias%3D%5C%22%24host%5C%22%7D%5B%24interval%5D)%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2015%3A45%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 5,
+              "target": "alias(servers.$host.mysql-variables.gauge-table_open_cache, 'Table Open Cache')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MySQL Open Tables",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "showTitle": true,
+      "title": "Files and Tables"
+    }
+  ],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": "${DS_GRAPHITE}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": "servers.sql*",
+        "refresh": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 12,
+  "version": 12,
+  "links": [],
+  "gnetId": null
+}
