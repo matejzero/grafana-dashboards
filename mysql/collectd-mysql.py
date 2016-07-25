@@ -19,6 +19,7 @@
 #
 # Requires "MySQLdb" for Python
 #
+# Added metrics for Grafana Dashboards by Matej Zerovnik <matej@zunaj.si>
 # Author: Chris Boulton <chris@chrisboulton.com>
 # License: MIT (http://www.opensource.org/licenses/mit-license.php)
 #
@@ -207,6 +208,8 @@ MYSQL_PROCESS_STATES = {
     'statistics': 0,
     'updating': 0,
     'writing_to_net': 0,
+    'creating_table': 0,
+    'opening_tables': 0,
 }
 
 MYSQL_INNODB_STATUS_VARS = {
@@ -284,7 +287,7 @@ MYSQL_INNODB_STATUS_MATCHES = {
     # --Thread 139954487744256 has waited at dict0dict.cc line 472 for 0.0000 seconds the semaphore:
     'seconds the semaphore': {
         'innodb_sem_waits': lambda row, stats: stats['innodb_sem_waits'] + 1,
-        'innodb_sem_wait_time_ms': lambda row, stats: int(row[9]) * 1000,
+        'innodb_sem_wait_time_ms': lambda row, stats: float(row[9]) * 1000,
     },
     # mysql tables in use 1, locked 1
     'mysql tables in use': {
@@ -473,7 +476,7 @@ def dispatch_value(prefix, key, value, type, type_instance=None):
         type_instance = key
 
     log_verbose('Sending value: %s/%s=%s' % (prefix, type_instance, value))
-    if not value:
+    if value is None:
         return
     value = int(value) # safety check
 
