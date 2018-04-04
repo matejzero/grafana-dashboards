@@ -282,7 +282,7 @@
           "datasource": "${DS_GRAPHITE}",
           "editable": true,
           "error": false,
-          "format": "Âµs",
+          "format": "µs",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -1025,7 +1025,7 @@
           },
           "yaxes": [
             {
-              "format": "Âµs",
+              "format": "µs",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1253,7 +1253,7 @@
           },
           "yaxes": [
             {
-              "format": "Âµs",
+              "format": "µs",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1481,7 +1481,7 @@
           },
           "yaxes": [
             {
-              "format": "Âµs",
+              "format": "µs",
               "label": "",
               "logBase": 1,
               "max": null,
